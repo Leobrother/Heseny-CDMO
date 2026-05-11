@@ -1,0 +1,25 @@
+backend:
+  name: github # 托管的后台，这里使用GitHub
+  repo: Leobrother/Heseny-CDMO # 替换为你的GitHub仓库地址
+  branch: main # 监听的分支
+
+media_folder: "static/img/uploads" # 上传的图片存储的路径
+public_folder: "/img/uploads" # 图片的公开访问URL
+
+collections:
+  - name: "services" # 板块名称，例如“服务”
+    label: "服务能力" # 后台显示的板块标签
+    folder: "content/services" # 数据存储的文件夹
+    create: true
+    fields: # 定义该板块包含哪些字段
+      - {label: "标题", name: "title", widget: "string"}
+      - {label: "图标", name: "icon", widget: "string"}
+      - {label: "描述", name: "description", widget: "text"}
+  - name: "cases" # 板块名称，例如“项目案例”
+    label: "项目案例"
+    folder: "content/cases"
+    create: true
+    fields:
+      - {label: "项目名称", name: "title", widget: "string"}
+      - {label: "封面图", name: "image", widget: "image"}
+      - {label: "正文描述", name: "body", widget: "markdown"}
