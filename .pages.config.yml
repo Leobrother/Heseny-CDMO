@@ -1,0 +1,35 @@
+media:
+  input: "images/uploads"
+  output: "/images/uploads"
+
+content:
+  - name: "services"
+    label: "服务能力"
+    type: "collection"
+    path: "_data/services"
+    fields:
+      - name: "title"
+        label: "标题"
+        type: "string"
+      - name: "icon"
+        label: "图标代码"
+        type: "string"
+        hint: "例如：fa-flask"
+      - name: "description"
+        label: "描述"
+        type: "text"
+
+  - name: "cases"
+    label: "项目案例"
+    type: "collection"
+    path: "_data/cases"
+    fields:
+      - name: "title"
+        label: "项目名称"
+        type: "string"
+      - name: "image"
+        label: "封面图片"
+        type: "image"
+      - name: "body"
+        label: "项目详情"
+        type: "markdown"
