@@ -1,0 +1,17 @@
+[
+  {
+    "title": "精密注塑成型",
+    "icon": "fa-industry",
+    "description": "万级洁净车间，注塑精度可达±0.01mm，年产能5000万件。"
+  },
+  {
+    "title": "ISO 13485 质量体系",
+    "icon": "fa-certificate",
+    "description": "全流程质量追溯，符合NMPA、FDA、CE法规要求。"
+  },
+  {
+    "title": "快速打样服务",
+    "icon": "fa-clock",
+    "description": "7天交付原型样品，加速您从概念到临床的进程。"
+  }
+]
