@@ -469,12 +469,7 @@
             <div class="container">
                 <h2 class="section-title">一体化CDMO服务能力</h2>
                 <div class="section-sub">覆盖器械全生命周期 — 从产品定义、设计开发、工艺验证到商业化生产与法规注册支持。</div>
-                <div class="cards-grid">
-                    <div class="service-card"><i class="fas fa-microscope service-icon"></i><h3>概念与研发</h3><p>早期概念验证、工业设计、原型开发及DFM可制造性分析。</p></div>
-                    <div class="service-card"><i class="fas fa-flask service-icon"></i><h3>工艺开发</h3><p>精密注塑、挤出、组装自动化，全流程工艺表征与验证。</p></div>
-                    <div class="service-card"><i class="fas fa-industry service-icon"></i><h3>规模化生产</h3><p>10万级洁净车间、全自动产线，年产能达5000万件。</p></div>
-                    <div class="service-card"><i class="fas fa-file-signature service-icon"></i><h3>法规与质量</h3><p>NMPA/FDA/CE 申请支持，ISO 13485体系全覆盖。</p></div>
-                </div>
+               <div class="cards-grid" id="services-container"></div>
                 <!-- 全流程可视化时间轴 -->
                 <div style="margin-top: 3rem;">
                     <h3 style="font-size:1.6rem; margin-bottom:1rem;">从概念到商业化的成功路径</h3>
@@ -525,11 +520,7 @@
         <section id="cases" style="background: var(--gray-light);">
             <div class="container">
                 <h2 class="section-title">成功案例与产业信任</h2>
-                <div class="cards-grid">
-                    <div class="case-card"><div class="case-img" style="background-image: url('https://placehold.co/400x200/aaccdd/ffffff?text=脉冲电场消融系统');"></div><div class="case-content"><h3>脉冲电场消融导管</h3><p>12个月从研发样机到临床试验批件，工艺放大零缺陷通过核查。</p><span style="color:var(--primary);">#三类有源器械</span></div></div>
-                    <div class="case-card"><div class="case-img" style="background-image: url('https://placehold.co/400x200/b9d9ee/ffffff?text=智能胰岛素泵');"></div><div class="case-content"><h3>智能胰岛素泵耗材套装</h3><p>精密微流控与储药器一体化设计，年产能300万套，出口欧美。</p></div></div>
-                    <div class="case-card"><div class="case-img" style="background-image: url('https://placehold.co/400x200/cfe1ec/ffffff?text=骨科3D导板');"></div><div class="case-content"><h3>个性化骨科手术导板</h3><p>基于医学影像的数字化设计，实现48小时快速交付，提高手术精准度。</p></div></div>
-                </div>
+               <div class="cards-grid" id="cases-container"></div>
             </div>
         </section>
 
@@ -651,6 +642,41 @@
                 chatWindow.style.display = 'none';
             }
         });
-    </script>
+   // 加载服务能力数据
+fetch('_data/services.json')
+  .then(response => response.json())
+  .then(data => {
+    const container = document.getElementById('services-container');
+    if (container) {
+      container.innerHTML = data.map(service => `
+        <div class="service-card">
+          <i class="fas ${service.icon} service-icon"></i>
+          <h3>${service.title}</h3>
+          <p>${service.description}</p>
+        </div>
+      `).join('');
+    }
+  })
+  .catch(error => console.error('加载服务能力失败:', error));
+
+// 加载项目案例数据
+fetch('_data/cases.json')
+  .then(response => response.json())
+  .then(data => {
+    const container = document.getElementById('cases-container');
+    if (container) {
+      container.innerHTML = data.map(c => `
+        <div class="case-card">
+          <div class="case-img" style="background-image: url('${c.image}');"></div>
+          <div class="case-content">
+            <h3>${c.title}</h3>
+            <p>${c.body}</p>
+            ${c.tags ? `<span style="color:var(--primary);">${c.tags}</span>` : ''}
+          </div>
+        </div>
+      `).join('');
+    }
+  })
+  .catch(error => console.error('加载项目案例失败:', error)); </script>
 </body>
 </html>
