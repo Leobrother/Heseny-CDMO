@@ -1,0 +1,26 @@
+backend:
+  name: github
+  repo: leobrother/Heseny-CDMO   # 替换成你的用户名/仓库名
+  branch: main
+
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "services"
+    label: "服务能力"
+    folder: "_data/services"
+    create: true
+    fields:
+      - {label: "标题", name: "title", widget: "string"}
+      - {label: "图标代码", name: "icon", widget: "string", hint: "例如 fa-flask"}
+      - {label: "描述", name: "description", widget: "text"}
+
+  - name: "cases"
+    label: "项目案例"
+    folder: "_data/cases"
+    create: true
+    fields:
+      - {label: "项目名称", name: "title", widget: "string"}
+      - {label: "封面图片", name: "image", widget: "image"}
+      - {label: "详细内容", name: "body", widget: "markdown"}
